@@ -3,13 +3,13 @@ package lab1;
 import java.util.Random;
 import java.util.Scanner;
 
-public class LabStart1 {
+public class Main {
     private final static int RESTRICTION = 10;
     public static void main(String[] args) {
         int[][] array = enterMatrix();
         int arrayMax = discoverMax(array);
         int arrayMin = discoverMin(array);
-        int arraySum = countSum(array);
+        int arraySum = calculateSum(array);
 
         printMatrix(array);
         System.out.println("\nMax: " + arrayMax + "\nMin: " + arrayMin + "\nSum: " + arraySum);
@@ -127,7 +127,7 @@ public class LabStart1 {
         return elemMin;
     }
 
-    private static int countSum(int[][] arr) {
+    private static int calculateSum(int[][] arr) {
         int arrSum = 0;
         for (int[] ints : arr) {
             for (int anInt : ints) {
