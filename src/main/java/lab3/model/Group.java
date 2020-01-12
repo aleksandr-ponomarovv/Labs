@@ -1,16 +1,34 @@
 package lab3.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class Group {
     private String nameGroup;
     private int indexGroup;
-    private Student[] students;
+    private List<Student> students;
 
-    public Group(String nameGroup, int indexGroup, Student[] students) {
+    public Group(String nameGroup, int indexGroup, List<Student> students) {
         this.nameGroup = nameGroup;
         this.indexGroup = indexGroup;
         this.students = students;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Group group = (Group) o;
+        return indexGroup == group.indexGroup &&
+                nameGroup.equals(group.nameGroup) &&
+                students.equals(group.students);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameGroup, indexGroup, students);
     }
 
     public String getNameGroup() {
@@ -29,11 +47,11 @@ public class Group {
         this.indexGroup = indexGroup;
     }
 
-    public Student[] getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Student[] students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 
@@ -42,6 +60,6 @@ public class Group {
         return "\n\t\t\t\t" +
                 "Group name = '" + nameGroup + '\'' +
                 ", Group index = " + indexGroup + ", \n\n\t\t\t\t" +
-                "students = " + Arrays.toString(students);// + "\n \t\t\t";
+                "students = " + students;// + "\n \t\t\t";
     }
 }

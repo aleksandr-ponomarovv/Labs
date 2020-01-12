@@ -3,6 +3,8 @@ package lab3.controller;
 import lab3.model.Department;
 import lab3.model.Faculty;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FacultyCreator {
@@ -13,7 +15,7 @@ public class FacultyCreator {
     }
 
     public Faculty createFaculty(){
-        Faculty faculty = new Faculty(getFacultyName(),getFacultyNumber(),getFacultyFaculties());
+        Faculty faculty = new Faculty(getFacultyName(),getFacultyNumber(), getFacultyDepartments());
         return faculty;
     }
 
@@ -27,13 +29,13 @@ public class FacultyCreator {
         return scanner.nextInt();
     }
 
-    private Department[] getFacultyFaculties(){
+    private List<Department> getFacultyDepartments(){
         System.out.println("Enter the number of departments at the Faculty: ");
         int count = scanner.nextInt();
-        Department[] departments = new Department[count];
+        List<Department> departments = new ArrayList<>();
         DepartmentCreator departmentCreator = new DepartmentCreator(scanner);
         for (int i = 0; i < count; i++) {
-            departments[i] = departmentCreator.createDepartment();
+            departments.add(departmentCreator.createDepartment());
         }
         return departments;
     }

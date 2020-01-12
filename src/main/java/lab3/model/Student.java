@@ -1,5 +1,7 @@
 package lab3.model;
 
+import java.util.Objects;
+
 public class Student {
     private String nameStudent;
     private int indexStudent;
@@ -7,6 +9,20 @@ public class Student {
     public Student(String nameStudent, int indexStudent) {
         this.nameStudent = nameStudent;
         this.indexStudent = indexStudent;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return indexStudent == student.indexStudent &&
+                nameStudent.equals(student.nameStudent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameStudent, indexStudent);
     }
 
     public String getNameStudent() {

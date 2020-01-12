@@ -3,6 +3,8 @@ package lab3.controller;
 import lab3.model.Group;
 import lab3.model.Student;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GroupCreator {
@@ -13,7 +15,7 @@ public class GroupCreator {
     }
 
     public Group createGroup(){
-        Group group = new Group(getGroupName(),getGroupIndex(),getGroupFaculties());
+        Group group = new Group(getGroupName(),getGroupIndex(), getGroupStudents());
         return group;
     }
 
@@ -27,13 +29,13 @@ public class GroupCreator {
         return scanner.nextInt();
     }
 
-    private Student[] getGroupFaculties(){
+    private List<Student> getGroupStudents(){
         System.out.println("Enter the number of Students at the Group: ");
         int count = scanner.nextInt();
-        Student[] students = new Student[count];
+        List<Student> students = new ArrayList<>();
         StudentCreator studentCreator = new StudentCreator(scanner);
         for (int i = 0; i < count; i++) {
-            students[i] = studentCreator.createStudent();
+            students.add(studentCreator.createStudent());
         }
         return students;
     }

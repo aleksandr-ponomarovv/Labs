@@ -3,6 +3,8 @@ package lab3.controller;
 import lab3.model.Faculty;
 import lab3.model.University;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UniversityCreator {
@@ -29,13 +31,13 @@ public class UniversityCreator {
         return scanner.nextInt();
     }
 
-    private Faculty[] getUniversityFaculties() {
+    private List<Faculty> getUniversityFaculties() {
         System.out.println("Enter the number of faculties at the University: ");
         int count = scanner.nextInt();
-        Faculty[] faculties = new Faculty[count];
+        List<Faculty> faculties = new ArrayList();
         FacultyCreator facultyCreator = new FacultyCreator(scanner);
         for (int i = 0; i < count; i++) {
-            faculties[i] = facultyCreator.createFaculty();
+            faculties.add(facultyCreator.createFaculty());
         }
         return faculties;
     }

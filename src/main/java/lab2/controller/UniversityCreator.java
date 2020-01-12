@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class UniversityCreator {
     private Scanner scanner;
-
     public UniversityCreator(Scanner scanner) {
         this.setScanner(scanner);
     }
@@ -16,8 +15,6 @@ public class UniversityCreator {
         University university = new University(getUniversityName(), getUniversityRank(), getUniversityFaculties());
         return university;
     }
-
-    ;
 
     private String getUniversityName() {
         System.out.println("Input university name: ");

@@ -38,16 +38,6 @@ public class University {
         this.faculties = departments;
     }
 
-//    @Override
-//    public String toString() {
-//        return "University{" +
-//                "nameUniversity='" + nameUniversity + '\'' +
-//                ", rankUniversity=" + rankUniversity +
-//                ", faculties=" + Arrays.toString(faculties) +//faculties.toString() + //Arrays.toString(faculties) +
-//                '}';
-//    }
-
-
     @Override
     public String toString() {
         return "University have: \n\t" +

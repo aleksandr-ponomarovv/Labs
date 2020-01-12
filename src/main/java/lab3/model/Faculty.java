@@ -1,13 +1,16 @@
 package lab3.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class Faculty {
     private String nameFaculty;
     private int numberFaculty;
-    private Department[] departments;
+    private List<Department> departments;
 
-    public Faculty(String nameFaculty, int numberFaculty, Department[] departments) {
+    public Faculty(String nameFaculty, int numberFaculty, List<Department> departments) {
         this.nameFaculty = nameFaculty;
         this.numberFaculty = numberFaculty;
         this.departments = departments;
@@ -29,11 +32,11 @@ public class Faculty {
         this.numberFaculty = numberFaculty;
     }
 
-    public Department[] getDepartments() {
+    public List<Department> getDepartments() {
         return departments;
     }
 
-    public void setDepartments(Department[] departments) {
+    public void setDepartments(List<Department> departments) {
         this.departments = departments;
     }
 
@@ -42,6 +45,21 @@ public class Faculty {
         return "\n\t\t" +
                 "Faculty name = '" + nameFaculty + '\'' +
                 ", number = " + numberFaculty + ", \n\n\t\t" +
-                "departments = " + Arrays.toString(departments);// + "\n \t\t\t";
+                "departments = " + departments;// + "\n \t\t\t";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Faculty faculty = (Faculty) o;
+        return numberFaculty == faculty.numberFaculty &&
+                Objects.equals(nameFaculty, faculty.nameFaculty) &&
+                Objects.equals(departments, faculty.departments);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameFaculty, numberFaculty, departments);
     }
 }

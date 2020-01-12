@@ -3,6 +3,8 @@ package lab3.controller;
 import lab3.model.Department;
 import lab3.model.Group;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class DepartmentCreator {
@@ -13,7 +15,7 @@ public class DepartmentCreator {
     }
 
     public Department createDepartment(){
-        Department department = new Department(getDepartmentName(),getDepartmentIndex(),getDepartmentFaculties());
+        Department department = new Department(getDepartmentName(),getDepartmentIndex(), getDepartmentGroups());
         return department;
     }
 
@@ -27,13 +29,13 @@ public class DepartmentCreator {
         return scanner.nextInt();
     }
 
-    private Group[] getDepartmentFaculties(){
+    private List<Group> getDepartmentGroups(){
         System.out.println("Enter the number of Groups at the Department: ");
         int count = scanner.nextInt();
-        Group[] groups = new Group[count];
+        List<Group> groups = new ArrayList<>();
         GroupCreator groupCreator = new GroupCreator(scanner);
         for (int i = 0; i < count; i++) {
-            groups[i] = groupCreator.createGroup();
+            groups.add(groupCreator.createGroup());
         }
         return groups;
     }

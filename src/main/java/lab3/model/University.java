@@ -1,16 +1,17 @@
 package lab3.model;
-
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class University {
     private String nameUniversity;
     private int rankUniversity;
-    private Faculty[] faculties;
+    private List<Faculty> faculties;
 
-    public University(String nameUniversity, int indexUniversity, Faculty[] departments) {
+    public University(String nameUniversity, int indexUniversity, List<Faculty> faculties) {
         this.nameUniversity = nameUniversity;
         this.rankUniversity = indexUniversity;
-        this.faculties = departments;
+        this.faculties = faculties;
     }
 
     public String getNameUniversity() {
@@ -29,29 +30,34 @@ public class University {
         this.rankUniversity = indexUniversity;
     }
 
-    public Faculty[] getDepartments() {
+    public List<Faculty> getFaculties() {
         return faculties;
     }
 
-    public void setDepartments(Faculty[] departments) {
-        this.faculties = departments;
+    public void setFaculties(List<Faculty> faculties) {
+        this.faculties = faculties;
     }
-
-//    @Override
-//    public String toString() {
-//        return "University{" +
-//                "nameUniversity='" + nameUniversity + '\'' +
-//                ", rankUniversity=" + rankUniversity +
-//                ", faculties=" + Arrays.toString(faculties) +//faculties.toString() + //Arrays.toString(faculties) +
-//                '}';
-//    }
-
 
     @Override
     public String toString() {
         return "University have: \n\t" +
                 "name = '" + nameUniversity + '\'' +
                 ", rank = " + rankUniversity + ", \n\n\t" +
-                "faculties = " + Arrays.toString(faculties);// + "\n \t\t\t";
+                "faculties = " + faculties;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        University that = (University) o;
+        return rankUniversity == that.rankUniversity &&
+                nameUniversity.equals(that.nameUniversity) &&
+                faculties.equals(that.faculties);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameUniversity, rankUniversity, faculties);
     }
 }
